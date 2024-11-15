@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: black; /* Fondo negro */
+            background-image: url('Imagenes/Fondo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #background-video {
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url('Imagenes/Fondo 2.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            display: none; /* Oculto por defecto */
+            z-index: 0; /* Detrás del botón */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        
+
+        #start-button {
+            width: 20%;
+            padding-top: 5%;
+            background-image: url('Botones/Boton_siguiente.png');
+            background-size: 100% 100%;
+            background-position: center;
+            text-align: center;
+            border: none;
+            border-radius: 15px;
+            right:5%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: absolute;
+            z-index: 1;
+            font-size: 18px;
+        }
+
+        #start-button:hover {
+            background-image: url('Botones/Boton_siguiente_azul_1.png');
+        }
+
+        #start-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="overlay"></div>
+    <button id="start-button"></button>
+
+    <video id="background-video" autoplay playsinline>
+        <source src="Imagenes/9. Realidad/Foto.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+    </video>
+
+    <script>
+        const startButton = document.getElementById('start-button');
+        const video = document.getElementById('background-video');
+        const overlay = document.getElementById('overlay');
+
+        // Muestra el fondo azul semitransparente cuando el botón aparece
+        overlay.style.display = 'block';
+
+        // Escucha el clic en el botón para comenzar el video
+        startButton.addEventListener('click', () => {
+            video.play();
+            startButton.style.display = 'none';
+            overlay.style.display = 'none'; // Oculta el fondo azul al iniciar el video
+        });
+
+        // Escucha el final del video
+        video.addEventListener('ended', () => {
+            setTimeout(() => {
+                window.location.href = '10. Familia.html';
+            }, 15000);
+        });
+    </script>
+
+</body>
+</html>

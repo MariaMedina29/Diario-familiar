@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diario</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: black; /* Fondo negro */
+            background-image: url('Imagenes/Fondo.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #background-video {
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #start-button {
+            width: 20%;
+            padding-top: 5%;
+            background-image: url('Botones/Diario.png');
+            background-size: 100% 100%;
+            background-position: center;
+            text-align: center;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: absolute;
+            z-index: 1;
+            font-size: 18px;
+        }
+
+        #start-button:hover {
+            background-image: url('Botones/Diario_azul.png');
+        }
+
+        #start-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <button id="start-button"></button>
+
+    <video id="background-video" autoplay playsinline>
+        <source src="Imagenes/1. Titulo/Titulo.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+    </video>
+
+    <script>
+        const startButton = document.getElementById('start-button');
+        const video = document.getElementById('background-video');
+
+        // Escucha el clic en el botón para comenzar el video
+        startButton.addEventListener('click', () => {
+            video.play();
+            startButton.style.display = 'none';
+        });
+
+        // Escucha el final del video
+        video.addEventListener('ended', () => {
+            // Redirige a otra pantalla
+            window.location.href = '1.1 Loop 1.html'; // Cambia 'otra_pantalla.html' por la URL de destino
+        });
+    </script>
+
+</body>
+</html>
