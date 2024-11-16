@@ -102,10 +102,10 @@
             overlay.style.display = 'none'; // Oculta el fondo azul al iniciar el video
         });
 
-        // Escucha el final del video
         video.addEventListener('ended', () => {
-            window.location.href = '3.2 Salida.html';
-            
+            setTimeout(() => {
+                window.location.href = '3.2 Salida.html';
+            }, 15000);
         });
     </script>
 
